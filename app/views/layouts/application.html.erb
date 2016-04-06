@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AwesomeAnswers</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div>
+  <%# link_to is a helper method that comes from Rails which generates an <a>
+      HTML element. The `link_to` method takes two primary arguments. The first
+      argument is for the anchor text and the second argument is for the `href`
+      value (where you want to link to) %>
+  <%= link_to("Home", home_path, {class: "home"}) %>
+
+  <%= link_to("About Us", about_us_path({a: 'Hello',b: 123}), {class: "about"})%>
+
+  <%= link_to("Contact Us", contact_us_new_path, {class: "contact-us"}) %>
+</div>
+<%= yield %>
+
+</body>
+</html>
