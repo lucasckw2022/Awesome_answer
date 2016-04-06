@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   #for this route we will have helper methods: about about_us_path and about_us_url
   get "/about" => "welcome#about", as: :about_us
   get "/contact_us" => "contact_us#new", as: :contact_us_new
+  post "/contact_us" => "contact_us#create", as: :contact_us_create # this will have the same helper
+                                                                    # method as the route above because
+                                                                    # they have the same URL "/contact_us"
+
   # this defines the `root` or home page or our application to go to the
   # WelcomeController with `index` action. We will have access to the helper
   # methods: root_path and root_url
