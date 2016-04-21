@@ -1,0 +1,30 @@
+<%# this file `_form.html.erb` is considered to be a partial which means you
+    can include it in any other template (such as new.html.erb and edit.html.erb)
+    you must start the partial name with '_'. Partials have access to the same
+    instance variables available in the templates (e.g. @question) %>
+    <%= @question.errors.full_messages.join(", ") %>
+
+    <%# form_for is a Rails helper method that accepts an ActiveRecord object as
+        the first argument.
+        if @question is not persisted in the database, form_for makes the `action`
+        of the form go to `questions_path` (Rails convention) and it will make the
+        `method` of `form` be POST
+        %>
+    <%= form_for @question do |f| %>
+      <div>
+        <%= f.label :title %>
+        <%# by using f.text_field :title, if @question has a value for the attribute
+            `title` it will populate the field with that value. This is usually the
+            case when redisplaying the form after an error occurs %>
+        <%= f.text_field :title %>
+      </div>
+      <div>
+        <%= f.label :body %>
+        <%= f.text_area :body %>
+      </div>
+      <div class="">
+        <%= f.label :category%>
+        <%= f.collection_select :category_id, Category.order(:name), :id, :name%>
+      </div>
+      <%= f.submit %>
+    <% end %>

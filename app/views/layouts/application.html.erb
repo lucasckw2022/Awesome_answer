@@ -13,10 +13,28 @@
       argument is for the anchor text and the second argument is for the `href`
       value (where you want to link to) %>
   <%= link_to("Home", home_path, {class: "home"}) %>
-
+  |
   <%= link_to("About Us", about_us_path({a: 'Hello',b: 123}), {class: "about"})%>
-
+  |
+  <%= link_to"Questions", questions_path%>
+  |
   <%= link_to("Contact Us", contact_us_new_path, {class: "contact-us"}) %>
+  |
+  <%= link_to "New Question", new_question_path %>
+  |
+  <% if user_signed_in?%>
+  Hello <%= current_user.first_name%>!
+  <%= link_to "Sign Out", sessions_path, method: :delete%>
+  <%else%>
+  <%= link_to "Sign In", new_session_path %>
+  |
+  <%= link_to "Sign Up", new_user_path%>
+  <%end%>
+  <%#= flash[:notice] || flash[:alert]%>
+  <div>
+      <%= notice || alert %>
+  </div>
+
 </div>
 <%= yield %>
 

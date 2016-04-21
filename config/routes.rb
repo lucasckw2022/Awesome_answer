@@ -9,6 +9,47 @@ Rails.application.routes.draw do
   post "/contact_us" => "contact_us#create", as: :contact_us_create # this will have the same helper
                                                                     # method as the route above because
                                                                     # they have the same URL "/contact_us"
+  resources :users
+
+  resources :sessions, only: [:new, :create] do
+      delete :destroy, on: :collection
+  end
+  #An easy way to print all url below
+  resources :questions do
+    # get :search, on: :collection
+    # get :search, on: :member
+    # get :search
+
+    # the answers routes will be the standard ones prefixed: /questions/:question_id
+    # this way when, for instance, we want to create an answer we know the
+    # question that it references
+    # all the helpers will be the same as before prefixed with `question_`
+    resources :answers, only: [:create, :destroy]
+  end
+  resources :answers, only: [:create, :destroy] do
+    #collection is not referencing specific record
+
+  end
+
+
+  # get "/questions/new" => "questions#new", as: :new_questions
+  # post "/questions" => "questions#create", as: :questions
+  # get "/questions/:id" => "questions#show", as: :question
+  # get "/questions" => "questions#index"
+  # get "/questions/:id/edit" => "questions#edit",as: :edit_question
+  # patch "questions/:id" => "questions#update"
+  # delete "/questions/:id" => "questions#destory"
+
+# #Assignment: Route me
+#  delete "/questions/:id" => "questions#destory"
+#  get "/questions/:id/edit" => "questions#edit"
+#  get "/questions/:id" => "questions#show"
+#  post "/questions/:id/comments" => "comments#create"
+#  get "faq" => "home#faq"
+#
+# #Assignment: Routing Challenge
+#   get "/admin/questions" => "admin/questions#idex"
+#   get "/admin/questions" => "questions#idex"
 
   # this defines the `root` or home page or our application to go to the
   # WelcomeController with `index` action. We will have access to the helper
