@@ -100,4 +100,9 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.find params[:id]
   end
 
+  def user_like
+    @user_like ||= @question.like_for(current_user)
+  end
+  helper_method :user_like
+
 end

@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :questions, dependent: :nullify
   has_many :answers,   dependent: :nullify
+  has_many :likes, dependent: :nullify
+  has_many :liked_questions, through: :likes, source: :question
 
   attr_accessor :abc
 

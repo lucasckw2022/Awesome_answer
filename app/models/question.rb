@@ -10,6 +10,8 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   belongs_to :category
   belongs_to :user
+  has_many :likes, dependent: :nullify
+  has_many :users, through: :likes
 
   validates(:title, {presence: true, uniqueness: {message: "must be unique!"}})
 
@@ -49,6 +51,11 @@ class Question < ActiveRecord::Base
   def user_full_name
     user ? user.full_name : "Unknown User"
   end
+
+  def like_for(user)
+  likes.find_by_user_id user
+end
+
 
   private
 

@@ -16898,3 +16898,2303 @@ Processing by WelcomeController#index as HTML
   Rendered welcome/index.html.erb within layouts/application (0.8ms)
   [1m[35mUser Load (4.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
 Completed 200 OK in 53ms (Views: 47.6ms | ActiveRecord: 4.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (97.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateLikes (20160421164952)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1919.2ms)[0m  [1mCREATE TABLE "likes" ("id" serial primary key, "user_id" integer, "question_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (5.0ms)[0m  CREATE  INDEX  "index_likes_on_user_id" ON "likes"  ("user_id")
+  [1m[36m (2.6ms)[0m  [1mCREATE  INDEX  "index_likes_on_question_id" ON "likes"  ("question_id")[0m
+  [1m[35m (159.7ms)[0m  ALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (231.1ms)[0m  [1mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_9e671a64ef"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160421164952"]]
+  [1m[36m (17.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (57.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'answers'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.6ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'categories'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'likes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'questions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mUser Load (27.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mQuestion Load (27.0ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mQuestion Load (27.0ms)[0m  SELECT "questions".* FROM "questions" INNER JOIN "likes" ON "questions"."id" = "likes"."question_id" WHERE "likes"."user_id" = $1  [["user_id", 1]]
+  [1m[36mQuestion Load (36.7ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."id" IN (1, 2, 3, 4)[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["question_id", 1], ["created_at", "2016-04-21 17:31:25.024882"], ["updated_at", "2016-04-21 17:31:25.024882"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["question_id", 2], ["created_at", "2016-04-21 17:31:25.031701"], ["updated_at", "2016-04-21 17:31:25.031701"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["question_id", 3], ["created_at", "2016-04-21 17:31:25.032975"], ["updated_at", "2016-04-21 17:31:25.032975"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["question_id", 4], ["created_at", "2016-04-21 17:31:25.038757"], ["updated_at", "2016-04-21 17:31:25.038757"]]
+  [1m[36m (11.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mQuestion Load (0.4ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."id" IN (3, 4, 5, 6)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."question_id" IN (1, 2)  [["user_id", 1]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["question_id", 5], ["created_at", "2016-04-21 17:31:50.760374"], ["updated_at", "2016-04-21 17:31:50.760374"]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["question_id", 6], ["created_at", "2016-04-21 17:31:50.764218"], ["updated_at", "2016-04-21 17:31:50.764218"]]
+  [1m[36m (24.3ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 10:57:37 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (3.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1097.9ms)
+Completed 200 OK in 1358ms (Views: 1308.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 10:57:40 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 10:57:40 -0700
+
+
+Started GET "/questions" for 127.0.0.1 at 2016-04-21 10:57:45 -0700
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (1.1ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (45.3ms)
+Completed 200 OK in 106ms (Views: 94.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/questions/14" for 127.0.0.1 at 2016-04-21 10:57:46 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", nil]]
+  Rendered questions/show.html.erb within layouts/application (51.9ms)
+Completed 500 Internal Server Error in 109ms (ActiveRecord: 35.8ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/questions/show.html.erb:10:in `_app_views_questions_show_html_erb___868972579178598862_69996844412460'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (7.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (325.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (397.1ms)
+
+
+Started GET "/questions/14" for 127.0.0.1 at 2016-04-21 10:57:47 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mUser Load (1.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", nil]]
+  Rendered questions/show.html.erb within layouts/application (7.6ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.7ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/questions/show.html.erb:10:in `_app_views_questions_show_html_erb___868972579178598862_69996845832180'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (26.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (58.5ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-04-21 10:57:55 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 59ms (Views: 58.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-04-21 10:58:06 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"liUV+lVHVIsOaRs1l5H5+SQasHu74XSJ97tLYzsUb2xNrgTV/o36Xk5kZnTyknlxYAZVPfvNYhWbdxosBsc2JQ==", "email"=>"test@test.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "test@test.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 169ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 10:58:06 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 58ms (Views: 57.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2016-04-21 10:58:08 -0700
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.7ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered questions/index.html.erb within layouts/application (32.4ms)
+  [1m[35mUser Load (2.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 89ms (Views: 85.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/questions/7" for 127.0.0.1 at 2016-04-21 10:58:10 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mUser Load (3.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (51.2ms)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 3.8ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d1c0f550>:0x007f52d3ca8ac8>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), mehtod: :post%>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996844412460'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (15.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (29.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (56.6ms)
+
+
+Started GET "/questions/7" for 127.0.0.1 at 2016-04-21 10:58:10 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mQuestion Load (2.8ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (32.8ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 4.2ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d1c0f550>:0x007f52b0960910>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), mehtod: :post%>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996845832180'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (55.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (2.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (38.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (68.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 10:58:32 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (3.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 102ms (Views: 100.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions/7" for 127.0.0.1 at 2016-04-21 10:59:19 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mQuestion Load (1.6ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mUser Load (8.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (54.0ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 10.6ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d1c0f550>:0x007f52d2d2baf0>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), method: :post %>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996850533300'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (61.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (2.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (29.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (72.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 10:59:26 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (4.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 87ms (Views: 86.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2016-04-21 10:59:28 -0700
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (6.9ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered questions/index.html.erb within layouts/application (48.8ms)
+  [1m[35mUser Load (4.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 116ms (Views: 104.5ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/questions/13" for 127.0.0.1 at 2016-04-21 10:59:31 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mQuestion Load (1.8ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mUser Load (6.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (42.5ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 8.6ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d1c0f550>:0x007f52b06e9c18>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), method: :post %>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996562039460'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (15.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (29.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (4.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (53.7ms)
+
+
+Started GET "/questions/13" for 127.0.0.1 at 2016-04-21 10:59:31 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mUser Load (6.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (44.6ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 6.2ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d1c0f550>:0x007f52d37e0540>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), method: :post %>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996850533300'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (17.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (49.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (25.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (66.9ms)
+
+
+Started GET "/questions/13" for 127.0.0.1 at 2016-04-21 11:00:50 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (38.4ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d1c0f550>:0x007f52d3a1c520>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), method: :post %>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996850533300'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (7.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (45.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (24.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (61.8ms)
+
+
+Started GET "/questions/" for 127.0.0.1 at 2016-04-21 11:01:29 -0700
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.7ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered questions/index.html.erb within layouts/application (63.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 119ms (Views: 117.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:01:32 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (56.4ms)
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 0.9ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d1c0f550>:0x007f52d1f4b908>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), method: :post %>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996562039460'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (16.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (31.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (61.6ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:01:32 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mQuestion Load (1.9ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (35.0ms)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 2.1ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d1c0f550>:0x007f52b08b30d0>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), method: :post %>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996850533300'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (56.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (65.9ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:02:35 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mQuestion Load (1.7ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (2.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (90.6ms)
+Completed 500 Internal Server Error in 150ms (ActiveRecord: 8.3ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d370a738>:0x007f52d37021c8>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), method: :post %>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996850533300'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (58.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (73.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 11:03:05 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (10.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 78ms (Views: 66.7ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2016-04-21 11:03:21 -0700
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.9ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (35.6ms)
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 108ms (Views: 90.0ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/questions/7" for 127.0.0.1 at 2016-04-21 11:03:22 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mQuestion Load (8.5ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (50.3ms)
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 13.7ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d2e1b4b0>:0x007f52b0cc62a8>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), method: :post %>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996562039460'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (4.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (24.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (58.4ms)
+
+
+Started GET "/questions/7" for 127.0.0.1 at 2016-04-21 11:03:23 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mUser Load (6.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered questions/show.html.erb within layouts/application (38.0ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 6.3ms)
+
+ActionView::Template::Error (undefined method `question_likes_path' for #<#<Class:0x007f52d2e1b4b0>:0x007f52d2314850>):
+    13:                                                 data: {confirm: "Are you sure?"} %>
+    14: <% end %>
+    15: <hr>
+    16: <%= link_to "Like", question_likes_path(@question), method: :post %>
+    17: <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+    18: <!-- the below would do the same as above-->
+    19: <hr>
+  app/views/questions/show.html.erb:16:in `_app_views_questions_show_html_erb___868972579178598862_69996850533300'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (58.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (4.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (29.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (65.7ms)
+
+
+Started GET "/rails/info" for 127.0.0.1 at 2016-04-21 11:03:31 -0700
+Processing by Rails::InfoController#index as HTML
+Redirected to http://localhost:3000/rails/info/routes
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes" for 127.0.0.1 at 2016-04-21 11:03:31 -0700
+Processing by Rails::InfoController#routes as HTML
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (31.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/railties-4.2.6/lib/rails/templates/rails/info/routes.html.erb within layouts/application (50.7ms)
+Completed 200 OK in 68ms (Views: 67.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:04:18 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mQuestion Load (1.5ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAnswer Load (73.0ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 4]]
+  Rendered questions/show.html.erb within layouts/application (155.6ms)
+Completed 200 OK in 255ms (Views: 135.4ms | ActiveRecord: 88.1ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/contact_us.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/contact_us.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-21 11:04:19 -0700
+
+
+Started POST "/questions/4/likes" for 127.0.0.1 at 2016-04-21 11:04:22 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"Vu/6PVDwnU62lv8GJVNfdkrN8NmqjySq9M5WnZelRgWNZOsS+zozm/abgkdAUN/+DtEVn+qjMjaYAgfSqnYfTA==", "question_id"=>"4"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (2.7ms)[0m  [1mBEGIN[0m
+  [1m[35mLike Exists (1.2ms)[0m  SELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 4) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["question_id", 4], ["created_at", "2016-04-21 18:04:22.713876"], ["updated_at", "2016-04-21 18:04:22.713876"]]
+  [1m[35m (2.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/4
+Completed 302 Found in 62ms (ActiveRecord: 9.7ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:04:22 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (2.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 4]]
+  Rendered questions/show.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 83ms (Views: 77.9ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/questions/4/likes" for 127.0.0.1 at 2016-04-21 11:06:08 -0700
+
+SyntaxError (/home/lucas/Codecore/project1/awesome_answers/app/controllers/likes_controller.rb:20: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/likes_controller.rb:20: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (55.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (31.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (66.5ms)
+
+
+Started POST "/questions/4/likes" for 127.0.0.1 at 2016-04-21 11:06:15 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"bfiCc4rPCvy2kMfjfctHS/Q19Sq88OEjaKRBTtmhMKm2c5NcIQWkKfaduqIYyMfDsCkQbPzc978EaBAB5HJp4A==", "question_id"=>"4"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (2.4ms)[0m  BEGIN
+  [1m[36mLike Exists (2.6ms)[0m  [1mSELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 4) LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+Redirected to http://localhost:3000/questions/4
+Completed 302 Found in 67ms (ActiveRecord: 16.0ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:06:15 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mQuestion Load (4.7ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAnswer Load (1.0ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 4]]
+  Rendered questions/show.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 111ms (Views: 87.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/contact_us.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/contact_us.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:16 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:17 -0700
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:17 -0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:17 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:17 -0700
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:17 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:17 -0700
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:06:49 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 4]]
+  Rendered questions/show.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 129ms (Views: 125.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:49 -0700
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:49 -0700
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:49 -0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/contact_us.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/contact_us.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-21 11:06:50 -0700
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:14:22 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 4]]
+  [1m[36m (3.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 4]]
+  [1m[35mAnswer Load (1.8ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 4]]
+  Rendered questions/show.html.erb within layouts/application (68.8ms)
+Completed 200 OK in 179ms (Views: 118.0ms | ActiveRecord: 27.2ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/contact_us.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/contact_us.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-21 11:14:23 -0700
+
+
+Started DELETE "/questions/4/likes/7" for 127.0.0.1 at 2016-04-21 11:14:25 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"TkB+c61wtzGXTTVPsT1wPk4okjcaBkcf9+c//CNTTmCVy29cBroZ5NdASA7UPvC2CjR3cVoqUYObK26zHoAXKQ==", "question_id"=>"4", "id"=>"7"}
+  [1m[36mQuestion Load (3.0ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mLike Load (0.5ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36m (2.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "likes" WHERE "likes"."id" = $1  [["id", 7]]
+  [1m[36m (17.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/4
+Completed 302 Found in 28ms (ActiveRecord: 24.2ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:14:25 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mQuestion Load (2.9ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (0.2ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 4]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 4]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 4]]
+  Rendered questions/show.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 62ms (Views: 56.6ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/questions/4/likes" for 127.0.0.1 at 2016-04-21 11:14:27 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"9axmHtVzJD9swG0498WzUM7tri+hoGszQ5+WsKmyB4YuJ3cxfrmK6izNEHmSxjPYivFLaeGMfa8vU8f/lGFezw==", "question_id"=>"4"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (2.7ms)[0m  [1mBEGIN[0m
+  [1m[35mLike Exists (0.2ms)[0m  SELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 4) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["question_id", 4], ["created_at", "2016-04-21 18:14:27.835157"], ["updated_at", "2016-04-21 18:14:27.835157"]]
+  [1m[35m (2.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/4
+Completed 302 Found in 12ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:14:27 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mQuestion Load (0.9ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (4.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 4]]
+  [1m[35m (5.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 4]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 4]]
+  Rendered questions/show.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 57ms (Views: 44.5ms | ActiveRecord: 11.4ms)
+
+
+Started DELETE "/questions/4/likes/8" for 127.0.0.1 at 2016-04-21 11:14:29 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uW9kND+2GF/oIp0OPXqSHG7t7YyU5chTR4mp18H6qjdi5HUblHy2iqgv4E9YeRKUKvEIytTJ3s8rRfiY/Cnzfg==", "question_id"=>"4", "id"=>"8"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mLike Load (7.8ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 8]]
+  [1m[35m (24.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/4
+Completed 302 Found in 36ms (ActiveRecord: 33.2ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:14:29 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mQuestion Load (2.7ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (0.2ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 4]]
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 4]]
+  [1m[36mAnswer Load (6.3ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 4]]
+  Rendered questions/show.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 56ms (Views: 43.7ms | ActiveRecord: 11.0ms)
+
+
+Started POST "/questions/4/likes" for 127.0.0.1 at 2016-04-21 11:14:30 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"z9TdB3AiWA4iaMRsPj+Ua2GqQAB1ArRjo4RlR535ewcUX8wo2+j222JluS1bPBTjJbalRjUuov/PSDQIoCoiTg==", "question_id"=>"4"}
+  [1m[35mQuestion Load (1.9ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mLike Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 4) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["question_id", 4], ["created_at", "2016-04-21 18:14:30.402900"], ["updated_at", "2016-04-21 18:14:30.402900"]]
+  [1m[36m (24.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/4
+Completed 302 Found in 35ms (ActiveRecord: 27.2ms)
+
+
+Started GET "/questions/4" for 127.0.0.1 at 2016-04-21 11:14:30 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mQuestion Load (0.8ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (1.9ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 4]]
+  [1m[36m (2.7ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 4]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 4]]
+  Rendered questions/show.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 95ms (Views: 55.6ms | ActiveRecord: 5.7ms)
+
+
+Started DELETE "/sessions" for 127.0.0.1 at 2016-04-21 11:14:39 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ouwJMC6ry84k0whYg0cDUfn5a0xaf7T6eMyhT8VXK9x5ZxgfhWFlG2TedRnmRIPZveWOChpTomYUAPAA+IRylQ=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 11:14:39 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2016-04-21 11:14:41 -0700
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (16.8ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered questions/index.html.erb within layouts/application (62.9ms)
+Completed 200 OK in 121ms (Views: 104.1ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/questions/6" for 127.0.0.1 at 2016-04-21 11:14:43 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", nil]]
+  Rendered questions/show.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.3ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/questions/show.html.erb:10:in `_app_views_questions_show_html_erb___868972579178598862_69996851625580'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (40.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (62.7ms)
+
+
+Started GET "/questions/6" for 127.0.0.1 at 2016-04-21 11:14:43 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mQuestion Load (1.3ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (3.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", nil]]
+  Rendered questions/show.html.erb within layouts/application (9.4ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 5.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/questions/show.html.erb:10:in `_app_views_questions_show_html_erb___868972579178598862_69996847960180'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (36.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (62.9ms)
+
+
+Started GET "/questions/6" for 127.0.0.1 at 2016-04-21 11:15:59 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", nil]]
+Completed 404 Not Found in 53ms (ActiveRecord: 12.7ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/controllers/questions_controller.rb:63:in `show'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (3.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (37.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (54.9ms)
+
+
+Started PUT "/__web_console/repl_sessions/f75962437a1c1ec92e949f9b6549a24e" for 127.0.0.1 at 2016-04-21 11:26:57 -0700
+
+
+Started PUT "/__web_console/repl_sessions/f75962437a1c1ec92e949f9b6549a24e" for 127.0.0.1 at 2016-04-21 11:27:06 -0700
+
+
+Started PUT "/__web_console/repl_sessions/f75962437a1c1ec92e949f9b6549a24e" for 127.0.0.1 at 2016-04-21 11:27:17 -0700
+
+
+Started PUT "/__web_console/repl_sessions/f75962437a1c1ec92e949f9b6549a24e" for 127.0.0.1 at 2016-04-21 11:27:21 -0700
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-04-21 11:28:14 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 46ms (Views: 45.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2016-04-21 11:28:36 -0700
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (1.1ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (35.9ms)
+Completed 200 OK in 105ms (Views: 86.5ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/questions/7" for 127.0.0.1 at 2016-04-21 11:29:14 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", nil]]
+  Rendered questions/show.html.erb within layouts/application (16.6ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 12.8ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/questions/show.html.erb:10:in `_app_views_questions_show_html_erb___868972579178598862_69996851625580'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (27.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (62.3ms)
+
+
+Started GET "/questions/7" for 127.0.0.1 at 2016-04-21 11:29:14 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", nil]]
+  Rendered questions/show.html.erb within layouts/application (2.9ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.6ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/questions/show.html.erb:10:in `_app_views_questions_show_html_erb___868972579178598862_69996847960180'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (3.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (61.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 11:33:34 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 83ms (Views: 82.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-04-21 11:33:37 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 50ms (Views: 48.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-04-21 11:33:41 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gwck+m1L56L3AQ31tl4G23rhIT1ABTnajWsEfgli3N9YjDXVxoFJd7cMcLTTXYZTPv3EewApL0bhp1UxNLGFlg==", "email"=>"test@test.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "test@test.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 167ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 11:33:41 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 55ms (Views: 54.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions/new" for 127.0.0.1 at 2016-04-21 11:33:43 -0700
+Processing by QuestionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCategory Load (31.8ms)[0m  SELECT "categories".* FROM "categories"  ORDER BY "categories"."name" ASC
+  Rendered questions/_form.html.erb (71.8ms)
+  Rendered questions/new.html.erb within layouts/application (73.1ms)
+Completed 200 OK in 150ms (Views: 88.5ms | ActiveRecord: 34.5ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2016-04-21 11:33:50 -0700
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sETL0q7GjP3N7/eSnU6SYQweklrs1ASzzyCYMphOeRlrz9r9BQwiKI3iitP4TRLpSAJ3HKz4Ei+j7Ml9pZ0gUA==", "question"=>{"title"=>"testestestse", "body"=>"dasfsdfdsa", "category_id"=>"3"}, "commit"=>"Create Question"}
+Unpermitted parameter: category_id
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mQuestion Exists (19.5ms)[0m  [1mSELECT  1 AS one FROM "questions" WHERE "questions"."title" = 'Testestestse' LIMIT 1[0m
+  [1m[35mSQL (63.5ms)[0m  INSERT INTO "questions" ("title", "body", "view_count", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Testestestse"], ["body", "dasfsdfdsa"], ["view_count", 0], ["user_id", 5], ["created_at", "2016-04-21 18:33:50.686991"], ["updated_at", "2016-04-21 18:33:50.686991"]]
+  [1m[36m (9.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 98ms (ActiveRecord: 92.8ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:33:50 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (4.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (4.1ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 225]]
+  [1m[36mAnswer Load (1.7ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 97ms (Views: 73.3ms | ActiveRecord: 17.7ms)
+
+
+Started POST "/questions/225/likes" for 127.0.0.1 at 2016-04-21 11:33:54 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"b6DnmLM8s1RY7yePz3aPyBq7zXof0VJIWzwm00Lo/4K0K/a3GPYdgRjiWs6qdQ9AXqcoPF/9RNQ38Hecfzumyw==", "question_id"=>"225"}
+  [1m[35mQuestion Load (3.6ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", "225"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mLike Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 225) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["question_id", 225], ["created_at", "2016-04-21 18:33:54.110473"], ["updated_at", "2016-04-21 18:33:54.110473"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 29ms (ActiveRecord: 13.5ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:33:54 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (3.4ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (55.8ms)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 5.6ms)
+
+ActionView::Template::Error (undefined local variable or method `like' for #<#<Class:0x007f52d3183878>:0x007f52d383b328>):
+    16: <%# if user sign in and liked this question%>
+    17: <% if user_signed_in? && user_like %>
+    18: <%# pass it to nested like by passing the @question and like object%>
+    19:   <%= link_to "Un-Like", question_like_path(@question, like), method: :delete %>
+    20: <% else %>
+    21:   <%= link_to "Like", question_likes_path(@question), method: :post %>
+    22: <% end%>
+  app/views/questions/show.html.erb:19:in `_app_views_questions_show_html_erb___868972579178598862_69996853922940'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.2ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (39.8ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (4.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (32.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (62.2ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2016-04-21 11:34:27 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (5.3ms)
+  [1m[35mUser Load (3.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 51ms (Views: 47.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/about?a=Hello&b=123" for 127.0.0.1 at 2016-04-21 11:34:29 -0700
+Processing by WelcomeController#about as HTML
+  Parameters: {"a"=>"Hello", "b"=>"123"}
+  Rendered welcome/about.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 63ms (Views: 61.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2016-04-21 11:34:30 -0700
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (1.8ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (30.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 84ms (Views: 81.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:34:36 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (1.0ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (8.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (2.1ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  [1m[35m (2.4ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 225]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (35.8ms)
+Completed 200 OK in 64ms (Views: 48.3ms | ActiveRecord: 14.5ms)
+
+
+Started DELETE "/questions/225/likes/10" for 127.0.0.1 at 2016-04-21 11:34:38 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"qyzuDfAoFmYvNk2Wn9C4VrEysUK+a7DR35+HTQU3k9hwp/8iW+K4s287MNf60zje9S5UBP5Hpk2zU9YCOOTKkQ==", "question_id"=>"225", "id"=>"10"}
+  [1m[35mLike Load (0.2ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1[0m  [["id", "10"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 10]]
+  [1m[35m (2.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 14ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:34:38 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mUser Load (7.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (0.2ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 225]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 225]]
+  [1m[35mAnswer Load (4.9ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 71ms (Views: 57.4ms | ActiveRecord: 12.5ms)
+
+
+Started POST "/questions/225/likes" for 127.0.0.1 at 2016-04-21 11:34:40 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"SRm21VGLPzyLrOwKO4t8tVOJuCy8+zBQEyNWKWE1LzKSkqf6+kGR6cuhkUteiPw9F5VdavzXJsx/7wdmXOZ2ew==", "question_id"=>"225"}
+  [1m[36mQuestion Load (1.4ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", "225"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mLike Exists (0.4ms)[0m  SELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 225) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["question_id", 225], ["created_at", "2016-04-21 18:34:40.097466"], ["updated_at", "2016-04-21 18:34:40.097466"]]
+  [1m[35m (1.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 28ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:34:40 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (3.0ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 225]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 225]]
+  [1m[35mAnswer Load (1.7ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 67ms (Views: 60.7ms | ActiveRecord: 5.2ms)
+
+
+Started DELETE "/questions/225/likes/11" for 127.0.0.1 at 2016-04-21 11:34:41 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0wUjDnj2CqYHEXqSf3msRY3xBkytU3T7BXz7q6n+1XsIjjIh0zykc0ccB9MaeizNye3jCu1/YmdpsKrklC2MMg==", "question_id"=>"225", "id"=>"11"}
+  [1m[36mLike Load (0.2ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1  [["id", "11"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.5ms)[0m  DELETE FROM "likes" WHERE "likes"."id" = $1  [["id", 11]]
+  [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 12ms (ActiveRecord: 8.2ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:34:41 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (0.7ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (4.7ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 225]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 60ms (Views: 51.4ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:36:17 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (3.7ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (1.5ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  [1m[35m (6.6ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 225]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (59.7ms)
+Completed 200 OK in 152ms (Views: 109.0ms | ActiveRecord: 13.3ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/contact_us.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/contact_us.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-21 11:36:18 -0700
+
+
+Started POST "/questions/225/likes" for 127.0.0.1 at 2016-04-21 11:36:20 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"Dv/8/z/HgTnx4ZplfMT0+p+r3BoWIwLjPQ5aDWZfSL7VdO3QlA0v7LHs5yQZx3Ry27c5XFYPFH9RwgtCW4wR9w==", "question_id"=>"225"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (4.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", "225"]]
+  [1m[35m (5.0ms)[0m  BEGIN
+  [1m[36mLike Exists (6.0ms)[0m  [1mSELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 225) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["question_id", 225], ["created_at", "2016-04-21 18:36:20.242000"], ["updated_at", "2016-04-21 18:36:20.242000"]]
+  [1m[36m (20.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 54ms (ActiveRecord: 36.8ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:36:20 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (0.5ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (0.2ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 225]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 67ms (Views: 60.3ms | ActiveRecord: 5.2ms)
+
+
+Started DELETE "/questions/225/likes/12" for 127.0.0.1 at 2016-04-21 11:36:23 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"TdJJVYR1rWTixA/pTlhHRHSnPGaVh17mxqfYr+8YlKGWWVh6L78DsaLJcqgrW8fMMLvZINWrSHqqa4ng0svN6A==", "question_id"=>"225", "id"=>"12"}
+  [1m[35mLike Load (0.2ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1  [["id", 12]]
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mQuestion Load (1.9ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1  [["id", "12"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "likes" WHERE "likes"."id" = $1  [["id", 12]]
+  [1m[36m (24.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 34ms (ActiveRecord: 28.0ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:36:23 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (2.5ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 225]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 71ms (Views: 65.8ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:39:09 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (3.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (1.6ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  [1m[35m (5.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 225]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (53.4ms)
+Completed 200 OK in 166ms (Views: 122.2ms | ActiveRecord: 24.1ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/contact_us.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/contact_us.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-21 11:39:10 -0700
+
+
+Started POST "/questions/225/likes" for 127.0.0.1 at 2016-04-21 11:39:12 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"pPw8MjLgPXBo4zRp6HzKJ/lgadeSaev5EVKrfgkaCnN/dy0dmSqTpSjuSSiNf0qvvXyMkdJF/WV9nvoxNMlTOg==", "question_id"=>"225"}
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `authorize_create' for #<LikesController:0x007f52b03abf10>):
+  activesupport (4.2.6) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:145:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/lucas/.rvm/rubies/ruby-2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/lucas/.rvm/rubies/ruby-2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/lucas/.rvm/rubies/ruby-2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.9ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (8.6ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (28.0ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (4.4ms)
+  Rendered /home/lucas/.rvm/gems/ruby-2.2.3/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (76.5ms)
+
+
+Started POST "/questions/225/likes" for 127.0.0.1 at 2016-04-21 11:41:02 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"pPw8MjLgPXBo4zRp6HzKJ/lgadeSaev5EVKrfgkaCnN/dy0dmSqTpSjuSSiNf0qvvXyMkdJF/WV9nvoxNMlTOg==", "question_id"=>"225"}
+  [1m[35mQuestion Load (0.5ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (1.5ms)[0m  [1mBEGIN[0m
+  [1m[35mLike Exists (0.3ms)[0m  SELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 225) LIMIT 1
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["question_id", 225], ["created_at", "2016-04-21 18:41:02.295252"], ["updated_at", "2016-04-21 18:41:02.295252"]]
+  [1m[35m (26.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 97ms (ActiveRecord: 32.9ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:41:02 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mUser Load (2.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (0.7ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 225]]
+  [1m[36m (2.4ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 225]]
+  [1m[35mAnswer Load (0.8ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (29.3ms)
+Completed 200 OK in 87ms (Views: 67.4ms | ActiveRecord: 14.2ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/contact_us.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/contact_us.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:03 -0700
+
+
+Started DELETE "/questions/225/likes/13" for 127.0.0.1 at 2016-04-21 11:41:05 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"G9ovlfxXprDRPOonPCPx8p09XhmYcMYTmdIQARrcHVDAUT66V50IZZExl2ZZIHF62SG7X9hc0I/1HkFOJw9EGQ==", "question_id"=>"225", "id"=>"13"}
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (3.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 13]]
+  [1m[35m (1.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 11ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:41:05 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mUser Load (1.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (0.2ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 225]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 225]]
+  [1m[35mAnswer Load (5.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 64ms (Views: 55.7ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[36mQuestion Load (1.5ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (1.7ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 225]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 225]]
+  [1m[35mAnswer Load (4.3ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 70ms (Views: 60.5ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/contact_us.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/contact_us.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-21 11:41:08 -0700
+
+
+Started POST "/questions/225/likes" for 127.0.0.1 at 2016-04-21 11:41:10 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"Ntzi+WgCLWBMNMm60ePdTUlE0klgFD7Ft979+bih5YbtV/PWw8iDtQw5tPu04F3FDVg3DyA4KFnbEqy2hXK8zw==", "question_id"=>"225"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mLike Exists (6.6ms)[0m  [1mSELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 225) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["question_id", 225], ["created_at", "2016-04-21 18:41:10.916603"], ["updated_at", "2016-04-21 18:41:10.916603"]]
+  [1m[36m (2.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 20ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:41:10 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (2.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 225]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 64ms (Views: 57.8ms | ActiveRecord: 3.0ms)
+
+
+Started DELETE "/questions/225/likes/14" for 127.0.0.1 at 2016-04-21 11:42:22 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ACKynr3t3Z+vmLGDChywjFswvlIOIn3Fkk/3+zcDbwnbqaOxFidzSu+VzMJvHzAEHyxbFE4Oa1n+g6a0CtA2QA==", "question_id"=>"225", "id"=>"14"}
+  [1m[35mLike Load (0.2ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mUser Load (3.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  DELETE FROM "likes" WHERE "likes"."id" = $1  [["id", 14]]
+  [1m[36m (44.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 120ms (ActiveRecord: 50.6ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:42:22 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mLike Load (3.7ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1[0m  [["question_id", 225]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 225]]
+  [1m[36mAnswer Load (1.5ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (20.9ms)
+Completed 200 OK in 96ms (Views: 62.5ms | ActiveRecord: 17.1ms)
+
+
+Started POST "/questions/225/likes" for 127.0.0.1 at 2016-04-21 11:42:24 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"4wuXBJDEOKUGOwYfK52mDbyg2fd9wnpT8J5OQarzbrs4gIYrOw6WcEY2e15OniaF+Lw8sT3ubM+cUh8OlyA38g==", "question_id"=>"225"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 225]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mLike Exists (0.2ms)[0m  SELECT  1 AS one FROM "likes" WHERE ("likes"."user_id" = 5 AND "likes"."question_id" = 225) LIMIT 1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "likes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["question_id", 225], ["created_at", "2016-04-21 18:42:24.784526"], ["updated_at", "2016-04-21 18:42:24.784526"]]
+  [1m[35m (2.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 12ms (ActiveRecord: 4.3ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:42:24 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mUser Load (3.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (0.2ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 225]]
+  [1m[36m (1.5ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 225]]
+  [1m[35mAnswer Load (2.7ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 57ms (Views: 47.2ms | ActiveRecord: 8.0ms)
+
+
+Started DELETE "/questions/225/likes/15" for 127.0.0.1 at 2016-04-21 11:42:34 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uP3my1l6jdU9FolEyfyl0R0HJvbhhLqGaIdWDmO8Tvpjdvfk8rAjAH0b9AWs/yVZWRvDsKGorBoESwdBXm8Xsw==", "question_id"=>"225", "id"=>"15"}
+  [1m[36mLike Load (1.5ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."id" = $1 LIMIT 1[0m  [["id", 15]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36mSQL (1.2ms)[0m  [1mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 15]]
+  [1m[35m (1.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/225
+Completed 302 Found in 8ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/questions/225" for 127.0.0.1 at 2016-04-21 11:42:34 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"225"}
+  [1m[36mQuestion Load (2.4ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 225]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (5.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 5 LIMIT 1  [["question_id", 225]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 225]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 225]]
+  Rendered questions/show.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 56ms (Views: 46.1ms | ActiveRecord: 9.1ms)
+
+
+Started DELETE "/sessions" for 127.0.0.1 at 2016-04-21 11:42:39 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"upseP08FuGDY24CrH/P/heieGkkOFYU1rVEUWI9AgMhhEA8Q5M8WtZjW/ep68H8NrIL/D045k6nBnUUXspPZgQ=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 11:42:39 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 56ms (Views: 55.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-04-21 11:42:49 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 48ms (Views: 47.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-04-21 11:42:54 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eR7pIhMT3jg11ibKbbfbERvW4axX4kjWKMG5TrktdnSilfgNuNlw7XXbW4sItFuZX8oE6hfOXkpEDegBhP4vPQ==", "email"=>"test2", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "test2"]]
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 96ms (Views: 79.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-04-21 11:43:00 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9MHKftNZXdZdytywXNbBPsf9i2dzPKazQg9IwiGIL54vSttReJPzAx3HofE51UG2g+FuITMQsC8uwxmNHFt21w==", "email"=>"test2@test.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[35mUser Load (1.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "test2@test.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 146ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-21 11:43:00 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 52ms (Views: 51.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/questions/new" for 127.0.0.1 at 2016-04-21 11:43:04 -0700
+Processing by QuestionsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories"  ORDER BY "categories"."name" ASC[0m
+  Rendered questions/_form.html.erb (23.2ms)
+  Rendered questions/new.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 81ms (Views: 74.4ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2016-04-21 11:43:08 -0700
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3UY50I641cmH4Q3X2V/Q/VllH4OhyTxukKqO3wLuiRAGzSj/JXJ7HMfscJa8XFB1HXn6xeHlKvL8Zt+QPz3QWQ==", "question"=>{"title"=>"fasdfdsafdsa", "body"=>"fsdafdsafdsa", "category_id"=>"3"}, "commit"=>"Create Question"}
+Unpermitted parameter: category_id
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mQuestion Exists (7.4ms)[0m  SELECT  1 AS one FROM "questions" WHERE "questions"."title" = 'Fasdfdsafdsa' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "questions" ("title", "body", "view_count", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Fasdfdsafdsa"], ["body", "fsdafdsafdsa"], ["view_count", 0], ["user_id", 6], ["created_at", "2016-04-21 18:43:08.897868"], ["updated_at", "2016-04-21 18:43:08.897868"]]
+  [1m[35m (13.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/questions/226
+Completed 302 Found in 30ms (ActiveRecord: 21.3ms)
+
+
+Started GET "/questions/226" for 127.0.0.1 at 2016-04-21 11:43:08 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"226"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 226]]
+  [1m[35mUser Load (3.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 6 LIMIT 1  [["question_id", 226]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 226]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 226]]
+  Rendered questions/show.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 69ms (Views: 60.9ms | ActiveRecord: 4.8ms)
+
+
+Started POST "/questions/226/likes" for 127.0.0.1 at 2016-04-21 11:43:11 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"EF6IDX7ze5FqmOW6rwjqK3Yj5FyY/2gCjKYIbpRuz9LL1Zki1TnVRCqVmPvKC2qjMj8BGtjTfp7galkhqb2Wmw==", "question_id"=>"226"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 226]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+Redirected to http://localhost:3000/questions/226
+Filter chain halted as :authorize_create rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/questions/226" for 127.0.0.1 at 2016-04-21 11:43:11 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"226"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 226]]
+  [1m[36mUser Load (2.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mLike Load (2.0ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 6 LIMIT 1[0m  [["question_id", 226]]
+  [1m[35m (5.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 226]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 226]]
+  Rendered questions/show.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 53ms (Views: 42.5ms | ActiveRecord: 10.0ms)
+
+
+Started POST "/questions/226/likes" for 127.0.0.1 at 2016-04-21 11:43:12 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"ZBp52OEoYuUnYeIAgw0MQ3G0kRjWq39pfNWJTwn+tBq/kWj3SuLMMGdsn0HmDozLNah0XpaHafUQGdgANC3tUw==", "question_id"=>"226"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 226]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+Redirected to http://localhost:3000/questions/226
+Filter chain halted as :authorize_create rendered or redirected
+Completed 302 Found in 9ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/questions/226" for 127.0.0.1 at 2016-04-21 11:43:12 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"226"}
+  [1m[36mQuestion Load (3.8ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 226]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mLike Load (1.8ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 6 LIMIT 1  [["question_id", 226]]
+  [1m[36m (3.8ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 226]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 226]]
+  Rendered questions/show.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 59ms (Views: 48.2ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/questions/226" for 127.0.0.1 at 2016-04-21 11:43:29 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"226"}
+  [1m[36mQuestion Load (1.4ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 226]]
+  [1m[35mUser Load (3.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mLike Load (1.0ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 6 LIMIT 1  [["question_id", 226]]
+  [1m[36m (4.0ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 226]]
+  [1m[35mAnswer Load (1.4ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 226]]
+  Rendered questions/show.html.erb within layouts/application (88.3ms)
+Completed 200 OK in 175ms (Views: 134.5ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/contact_us.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/contact_us.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-21 11:43:30 -0700
+
+
+Started POST "/questions/226/likes" for 127.0.0.1 at 2016-04-21 11:43:33 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"I44qGGYE8xJgUkCAqNVXRleNPmk5LeD5vlYEXGzkTh/4BTs3zc5dxyBfPcHN1tfOE5HbL3kB9mXSmlUTUTcXVg==", "question_id"=>"226"}
+  [1m[36mQuestion Load (3.8ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 226]]
+  [1m[35mUser Load (4.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+Redirected to http://localhost:3000/questions/226
+Filter chain halted as :authorize_create rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 8.2ms)
+
+
+Started GET "/questions/226" for 127.0.0.1 at 2016-04-21 11:43:33 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"226"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 226]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mLike Load (0.2ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 6 LIMIT 1[0m  [["question_id", 226]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 226]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 226]]
+  Rendered questions/show.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 63ms (Views: 46.8ms | ActiveRecord: 13.8ms)
+
+
+Started POST "/questions/226/likes" for 127.0.0.1 at 2016-04-21 11:43:36 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"wzVTk1/gqJqun3i4zOTKVY9nH7wFzMbT7ib1eHZ2aggYvkK89CoGT+6SBfmp50rdy3v6+kXg0E+C6qQ3S6UzQQ==", "question_id"=>"226"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 226]]
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+Redirected to http://localhost:3000/questions/226
+Filter chain halted as :authorize_create rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/questions/226" for 127.0.0.1 at 2016-04-21 11:43:36 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"226"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 226]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mLike Load (0.2ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 6 LIMIT 1  [["question_id", 226]]
+  [1m[36m (2.6ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1[0m  [["question_id", 226]]
+  [1m[35mAnswer Load (0.1ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1  [["question_id", 226]]
+  Rendered questions/show.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 59ms (Views: 50.8ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/questions/226/likes" for 127.0.0.1 at 2016-04-21 11:43:38 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"aCEHyylhGZ1Fy+URYdEHW/R3/+dvtmnOx+ygELxiYJSzqhbkgqu3SAXGmFAE0ofTsGsaoS+af1KrIPFfgbE53Q==", "question_id"=>"226"}
+  [1m[36mQuestion Load (1.4ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1[0m  [["id", 226]]
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+Redirected to http://localhost:3000/questions/226
+Filter chain halted as :authorize_create rendered or redirected
+Completed 302 Found in 10ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/questions/226" for 127.0.0.1 at 2016-04-21 11:43:38 -0700
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"226"}
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT 1  [["id", 226]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mLike Load (4.5ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."question_id" = $1 AND "likes"."user_id" = 6 LIMIT 1[0m  [["question_id", 226]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."question_id" = $1  [["question_id", 226]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = $1[0m  [["question_id", 226]]
+  Rendered questions/show.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 49ms (Views: 43.2ms | ActiveRecord: 4.9ms)

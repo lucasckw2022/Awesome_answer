@@ -25,11 +25,14 @@ Rails.application.routes.draw do
     # question that it references
     # all the helpers will be the same as before prefixed with `question_`
     resources :answers, only: [:create, :destroy]
+
+    resources :likes, only: [:create,:destroy]
   end
   resources :answers, only: [:create, :destroy] do
     #collection is not referencing specific record
 
   end
+
 
 
   # get "/questions/new" => "questions#new", as: :new_questions
