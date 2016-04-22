@@ -20,10 +20,23 @@
 <% else %>
   <%= link_to "Like", question_likes_path(@question), method: :post %>
 <% end%>
-(<%= @question.likes.count%>)
+(<%= @question.likes.count%>) |
+<% user_vote = @question.vote_for(current_user) %>
+<% if user_vote && user_vote.is_up?%>
+  <%= link_to "Un-do Vote Up", question_vote_path(@question,user_vote),method: :delete%> |
+  <%= link_to "Vote down", question_vote_path(@question, user_vote, {vote:{is_up:false}}),method: :patch%>
+<% elsif user_vote%>
+  <%= link_to "Vote Up", question_vote_path(@question, user_vote, {vote:{is_up:true}}),method: :patch%> |
+  <%= link_to "Un-do Vote down", question_vote_path(@question,user_vote),method: :delete%>
+<% else%>
+  <%= link_to "Vote up", question_votes_path(@question, {vote:{is_up:true}}),method: :post%> |
+  <%= link_to "Vote down", question_votes_path(@question, {vote:{is_up:false}}),method: :post%>
+<%end%>
+(<%= @question.vote_value%>)
 <%#= form_for @answer, url: question_answers_path(@question) do |f| %>
 <!-- the below would do the same as above-->
 <hr>
+<h2>Answers</h2>
 <%= @answer.errors.full_messages.join(", ")%>
 <div class="">
   <%= form_for [@question, @answer] do |f| %>
@@ -31,14 +44,17 @@
   <%= f.submit%>
   <%end%>
 </div>
-<h2>Answers</h2>
 <hr>
 <% @question.answers.each do |answer| %>
-Created By: <%= @question.user_full_name %> | <%= answer.body%>
-<% if can? :crud, answer %>
-<%= link_to "delete", question_answer_path(@question,answer),
-                      data: {confirm: "Are you sure"},
-                      method: :delete%>
+<div class="">
+  Created By: <%= @question.user_full_name %>    <% if can? :crud, answer %>
+    | <%= link_to "delete", question_answer_path(@question,answer),
+                          data: {confirm: "Are you sure"},
+                          method: :delete%>
+  <%end%>
+<p>
+  <%= answer.body%>
+</p>
+</div>
 <hr>
-<%end%>
 <%end%>

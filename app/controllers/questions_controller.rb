@@ -14,6 +14,9 @@ class QuestionsController < ApplicationController
   before_action :find_owned_question, only: [:edit,:update,:destroy]
   before_action :find_question, only: [:edit,:update,:destroy,:show]
 
+  # include QuestionsAnswersHelper
+  # helper_method :user_like
+
   def new
     # we need to define a new `Question` object in order to be able to
     # properly generate a form in Rails
@@ -100,9 +103,9 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.find params[:id]
   end
 
-  def user_like
-    @user_like ||= @question.like_for(current_user)
-  end
-  helper_method :user_like
+  # def user_like
+  #   @user_like ||= @question.like_for(current_user)
+  # end
+  # helper_method :user_like
 
 end

@@ -3,6 +3,9 @@ class AnswersController < ApplicationController
   before_action :find_question
   before_action :find_and_authorize_answer, only: :destroy
 
+  # include QuestionsAnswersHelper
+  # helper_method :user_like
+
   def create
     #to make sure that the question_id exit and
     #finding record do not need to use strong params

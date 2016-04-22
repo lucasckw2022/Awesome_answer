@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :votes
 # this defines a route so that when we receive a GET request with url: /home
 # Rails will invoke the WelcomeController with 'index' action
 # get({"/home" => "welcome#index"})
@@ -27,12 +28,13 @@ Rails.application.routes.draw do
     resources :answers, only: [:create, :destroy]
 
     resources :likes, only: [:create,:destroy]
+
+    resources :votes, only: [:create, :update, :destroy]
   end
   resources :answers, only: [:create, :destroy] do
     #collection is not referencing specific record
 
   end
-
 
 
   # get "/questions/new" => "questions#new", as: :new_questions
