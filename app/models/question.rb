@@ -14,6 +14,8 @@ class Question < ActiveRecord::Base
   has_many :liking_users, through: :likes, source: :user
   has_many :votes, dependent: :destroy
   has_many :voted_users, through: :votes, source: :user
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
 
   validates(:title, {presence: true, uniqueness: {message: "must be unique!"}})
 

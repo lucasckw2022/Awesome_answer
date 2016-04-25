@@ -1,0 +1,9 @@
+<h1>Reset Password</h1>
+
+<%= form_tag password_resets_path do %>
+<div class="">
+  <%= label_tag :email%>
+  <%= email_field_tag :email%>
+</div>
+<%= submit_tag "Email me Reset instructure"%>
+<%end%>

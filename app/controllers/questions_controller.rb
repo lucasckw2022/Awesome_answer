@@ -11,8 +11,9 @@ class QuestionsController < ApplicationController
 
   # before_action(:find_question, {only: [:show, :update, :destroy]})
 
-  before_action :find_owned_question, only: [:edit,:update,:destroy]
   before_action :find_question, only: [:edit,:update,:destroy,:show]
+  before_action :authorize_question, only: [:edit, :update, :destroy]
+  # before_action :find_owned_question, only: [:edit,:update,:destroy]
 
   # include QuestionsAnswersHelper
   # helper_method :user_like
@@ -91,17 +92,22 @@ class QuestionsController < ApplicationController
 
   private
 
+  def authorize_question
+    redirect_to root_path unless can? :crud, @question
+  end
+
   def find_question
     @question = Question.find params[:id]
   end
 
   def question_params
-    params.require(:question).permit([:title, :body])
+    params.require(:question).permit([:title, :body,
+                                      :category_id, {tag_ids: []}])
   end
 
-  def find_owned_question
-    @question = current_user.questions.find params[:id]
-  end
+  # def find_owned_question
+  #   @question = current_user.questions.find params[:id]
+  # end
 
   # def user_like
   #   @user_like ||= @question.like_for(current_user)

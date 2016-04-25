@@ -1,0 +1,14 @@
+<p>
+  Hello, <%=@user.first_name%>
+</p>
+<p>
+  We have received a request to reset your password. Please click on this link
+</p>
+<%#this is to send the token itself only %>
+<%= link_to "Please Click Here", edit_password_reset_url(id: @user.password_reset_token)%>
+<p>
+  Regards,
+</p>
+<p>
+  Awesome Answers Team
+</p>

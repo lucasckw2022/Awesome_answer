@@ -25,4 +25,21 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def generate_password_reset_data
+    generate_password_reset_token
+    self.password_reset_requested_at = Time.now
+    save
+  end
+
+  def password_reset_expired?
+    password_reset_requested_at < 60.minutes.ago
+  end
+
+  private
+
+  def generate_password_reset_token
+    begin
+      self.password_reset_token = SecureRandom.hex(32)
+  end while User.exists?(password_reset_token: self.password_reset_token)
+end
 end

@@ -2,7 +2,7 @@
 <p><%= @question.body%></p>
 <p>View Count: <%= @question.view_count %></p>
 <p>Created By: <%= @question.user_full_name %></p>
-
+<p>Tags: <%= @question.tags.map{|t| t.name }.join(", ") %></p>
 <%# can? is a helper method that came from the CanCanCan gem to help us enforce
     authorization rules in the views and controllers. We didn't specifically
     put rules for :edit and :destroy but we put a rule for :manage which includes

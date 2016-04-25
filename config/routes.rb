@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 # this defines a route so that when we receive a GET request with url: /home
 # Rails will invoke the WelcomeController with 'index' action
 # get({"/home" => "welcome#index"})
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   get "/home" => "welcome#index"
   #for this route we will have helper methods: about about_us_path and about_us_url
   get "/about" => "welcome#about", as: :about_us
@@ -35,6 +37,8 @@ Rails.application.routes.draw do
     #collection is not referencing specific record
 
   end
+
+  resources :password_resets, only:[:new,:create,:edit,:update]
 
 
   # get "/questions/new" => "questions#new", as: :new_questions

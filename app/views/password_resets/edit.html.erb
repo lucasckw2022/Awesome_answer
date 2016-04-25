@@ -1,0 +1,12 @@
+<h1>Enter a new password</h1>
+<%= form_for @user, url: password_reset_path(@user.password_reset_token) do |f|%>
+  <div class="">
+    <%= f.label :password%>
+    <%= f.password_field :password%>
+  </div>
+  <div class="">
+    <%= f.label :password_confirmation%>
+    <%= f.password_field :password_confirmation%>
+  </div>
+  <%= f.submit "Reset Password"%>
+<% end %>

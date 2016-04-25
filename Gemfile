@@ -38,10 +38,18 @@ gem 'cancancan'
 
 gem "rails_12factor"
 
+gem "quiet_assets"
+
+gem "delayed_job_active_record"
+
+gem "delayed_job_web"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rails-erd'
+  gem "letter_opener"
+  gem "pry"
 end
 
 group :development do
