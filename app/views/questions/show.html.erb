@@ -37,24 +37,12 @@
 <!-- the below would do the same as above-->
 <hr>
 <h2>Answers</h2>
-<%= @answer.errors.full_messages.join(", ")%>
-<div class="">
-  <%= form_for [@question, @answer] do |f| %>
-  <%= f.text_area :body%>
-  <%= f.submit%>
-  <%end%>
+<div id="answer-form">
+  <%= render "/answers/form", answer: @answer %>
 </div>
 <hr>
-<% @question.answers.each do |answer| %>
-<div class="">
-  Created By: <%= @question.user_full_name %>    <% if can? :crud, answer %>
-    | <%= link_to "delete", question_answer_path(@question,answer),
-                          data: {confirm: "Are you sure"},
-                          method: :delete%>
+<div id="answers">
+  <% @question.answers.each do |answer| %>
+    <%= render "/answers/answer" ,answer:answer%>
   <%end%>
-<p>
-  <%= answer.body%>
-</p>
 </div>
-<hr>
-<%end%>

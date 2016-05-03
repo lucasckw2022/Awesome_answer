@@ -17,15 +17,19 @@ class AnswersController < ApplicationController
     #create question_id in this answer record
     @answer.question = @question
     @answer.user = current_user
-    if @answer.save
-    # render json: params
-    AnswersMailer.notify_question_owner(@answer).deliver_later
-    redirect_to question_path(@question), notice: "Thank you for answering"
-    else
-    flash[:alert] = "not saved"
-    # this will render the show.html.erb inside views/questions
-    render "/questions/show"
-  end
+    respond_to do |format|
+        if @answer.save
+        # render json: params
+        AnswersMailer.notify_question_owner(@answer).deliver_later
+        format.html {redirect_to question_path(@question), notice: "Thank you for answering"}
+        format.js {render :create_success}
+        else
+        flash[:alert] = "not saved"
+        # this will render the show.html.erb inside views/questions
+        format.html {render "/questions/show"}
+        format.js { render :create_failure }
+      end
+    end
   end
 
   def destroy
@@ -34,8 +38,10 @@ class AnswersController < ApplicationController
     # #to delete answer only the answers in that question
     # answer = question.answers.find params[:id]
     @answer.destroy
-    #going back to the question show page
-    redirect_to question_path(@question)
+    respond_to do |format|
+      format.html { redirect_to question_path(@question), notice: "Answer deleted!" }
+      format.js { render :destroy}
+    end
   end
 
   def find_question

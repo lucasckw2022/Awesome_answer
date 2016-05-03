@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   # it will be accessible in the view files as well as controller files
 
   def current_user
-    @current_user ||= User.find session[:user_id]
+    @current_user ||= User.find session[:user_id] if user_signed_in?
   end
   helper_method :current_user
 

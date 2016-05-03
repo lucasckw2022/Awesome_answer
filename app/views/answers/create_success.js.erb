@@ -1,0 +1,4 @@
+$("#answers").prepend("<%=j render '/answers/answer',answer: @answer, style:'display:none' %>")
+<%# @answer = Answer.new%>
+$('#answer-form').html('<%= j render "/answers/form", answer: Answer.new %>');
+$("#<%= dom_id(@answer)%>").slideDown(1000);
