@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div>
+  <div class="container">
   <%# link_to is a helper method that comes from Rails which generates an <a>
       HTML element. The `link_to` method takes two primary arguments. The first
       argument is for the anchor text and the second argument is for the `href`
@@ -35,8 +35,8 @@
       <%= notice || alert %>
   </div>
 
-</div>
-<%= yield %>
 
+<%= yield %>
+</div>
 </body>
 </html>
